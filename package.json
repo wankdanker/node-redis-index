@@ -1,0 +1,36 @@
+{
+  "name": "redis-index",
+  "version": "1.0.0",
+  "description": "Index and query arbitrary objects with Redis.",
+  "main": "index.js",
+  "dependencies": {
+    "redis-key": "^1.3.0",
+    "debug": "^2.2.0",
+    "redis": "^2.4.2",
+    "hiredis": "^0.4.1"
+  },
+  "devDependencies": {
+    "tape": "^4.2.2"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wankdanker/node-redis-index.git"
+  },
+  "keywords": [
+    "redis",
+    "index",
+    "search",
+    "query",
+    "object",
+    "json"
+  ],
+  "author": "Dan VerWeire",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wankdanker/node-redis-index/issues"
+  },
+  "homepage": "https://github.com/wankdanker/node-redis-index#readme"
+}
