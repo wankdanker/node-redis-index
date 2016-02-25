@@ -9,7 +9,20 @@ module.exports.createClient = function () {
 }
 
 module.exports.createIndex = function (key, index, schema) {
-	return new RedisIndex ({ key : key, index : index, schema : schema });
+	var opts;
+	
+	if (typeof key === 'object' && key) {
+		opts = key;
+	}
+	else {
+		opts = {
+			key : key
+			, index : index
+			, schema : schema
+		};
+	}
+	
+	return new RedisIndex (opts);
 };
 
 function RedisIndex (opts) {
