@@ -30,6 +30,7 @@ function RedisIndex (opts) {
 
 	self.opts = opts;
 	self.schema = opts.schema || {};
+	self.storeObject = (opts.storeObject === false) ? false : true;
 	self.redisKey = redisKey.defaults(':', self.opts.key);
 	self.client = null
 }
@@ -71,11 +72,15 @@ RedisIndex.prototype.add = function (obj, cb) {
 		}
 	});
 
-	var ok = k('k', '___obj___', index);
-	keys.push(ok);
-
-	commands.push(['set', ok, JSON.stringify(obj)]);
-
+	//only save a representation of the object in redis
+	//if that is what is wanted.
+	if (self.storeObject) {
+		var ok = k('k', '___obj___', index);
+		keys.push(ok);
+		
+		commands.push(['set', ok, JSON.stringify(obj)]);
+	}
+	
 	var kk = k('s', '___keys___', index);
 	keys.push(kk);
 
@@ -210,6 +215,12 @@ RedisIndexSearch.prototype.exec = function (cb) {
 		}
 
 		var matches = result[offset];
+		
+		//if objects are not stored then just return the matches
+		if (!self.storeObject) {
+			return end(null, matches);
+		}
+		
 		var lookups = [];
 
 		matches.forEach(function (match) {
