@@ -33,6 +33,15 @@ TODO
 - [x] arrays of objects
 - [x] automatic full deep indexing
 - [ ] wildcards for schema definitions
+- [ ] add comparisons
+	- [ ] exists
+	- [ ] contains
+	- [ ] begins with
+	- [ ] ends with
+	- [x] in array (of values)
+- [ ] full text
+- [ ] string comparisons
+- [ ] sorting
 
 license
 -------
