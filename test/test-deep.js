@@ -48,7 +48,7 @@ test('add documents to the index', function (t) {
 test('test description.weight greater than 20', function (t) {
 	t.plan(2);
 
-	index.search({ "description.weight" : RedisIndex.RedisIndexSearch.gte(20) }).exec(function (err, data) {
+	index.search({ "description.weight" : index.gte(20) }).exec(function (err, data) {
 		t.notOk(err, 'no errors returned');
 
 		t.deepEqual(data, [docs[0], docs[3], docs[2]], 'correct documents returned')
