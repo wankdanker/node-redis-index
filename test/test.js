@@ -112,13 +112,13 @@ test('search on string field', function (t) {
 	});
 });
 
-test('search on string field', function (t) {
+test('search on string field and a different field', function (t) {
 	t.plan(2);
 
-	index.search({ description : 'thing' }).exec(function (err, data) {
+	index.search({ description : 'thing', item_id : 1 }).exec(function (err, data) {
 		t.notOk(err, 'no errors returned');
 
-		t.deepEqual(data, [docs[0], docs[1], docs[3]], 'correct documents returned')
+		t.deepEqual(data, [docs[0]], 'correct documents returned')
 		t.end();
 	});
 });

@@ -23,15 +23,15 @@ setTimeout(function () {
 }, 1000);
 ```
 
-status
-------
+TODO
+----
 
-* This is totaly experimental at this point.
-* Need to expand search capability.
-  * comparisons
-* Need proper tests
-* Sorting
-* Exact string values
+- [x] proper tests
+- [x] comparisons
+- [x] deep lookups
+- [ ] arrays of values
+- [ ] arrays of objects
+- [ ] automatic full deep indexing
 
 license
 -------
