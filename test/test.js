@@ -46,6 +46,17 @@ test('add documents to the index', function (t) {
 	});
 });
 
+test('return all documents', function (t) {
+	t.plan(2);
+
+	index.search().exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[0], docs[1], docs[2], docs[3]], 'correct documents returned');
+		t.end();
+	});
+});
+
 test('test item_id greater than equal to 2', function (t) {
 	t.plan(2);
 
