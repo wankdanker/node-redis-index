@@ -94,13 +94,57 @@ test('add documents to the index', function (t) {
 	});
 });
 
-test('test greater than equal to', function (t) {
+test('test item_id greater than equal to 2', function (t) {
 	t.plan(2);
 
 	index.search({ item_id : RedisIndex.RedisIndexSearch.gte(2) }).exec(function (err, data) {
 		t.notOk(err, 'no errors returned');
 
 		t.deepEqual(data, [docs[1], docs[2], docs[3]], 'correct documents returned')
+		t.end();
+	});
+});
+
+test('test item_id greater than 2', function (t) {
+	t.plan(2);
+
+	index.search({ item_id : RedisIndex.RedisIndexSearch.gt(2) }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[2], docs[3]], 'correct documents returned')
+		t.end();
+	});
+});
+
+test('test item_id less than equal to 2', function (t) {
+	t.plan(2);
+
+	index.search({ item_id : RedisIndex.RedisIndexSearch.lte(2) }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[0], docs[1]], 'correct documents returned')
+		t.end();
+	});
+});
+
+test('test item_id less than 2', function (t) {
+	t.plan(2);
+
+	index.search({ item_id : RedisIndex.RedisIndexSearch.lt(2) }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[0]], 'correct documents returned')
+		t.end();
+	});
+});
+
+test('test item_id between 2 and 3', function (t) {
+	t.plan(2);
+
+	index.search({ item_id : RedisIndex.RedisIndexSearch.between(2, 3) }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[1], docs[2]], 'correct documents returned')
 		t.end();
 	});
 });
