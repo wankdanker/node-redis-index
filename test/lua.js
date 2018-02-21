@@ -49,3 +49,27 @@ test('test zrangebyscorestore lua script', function (t) {
 		client.quit();
 	});
 });
+
+test('test zrangebylexstore lua script', function (t) {
+	var commands = [];
+	var client = RedisIndex.createClient();
+
+	commands.push(['zadd', 'source', 0, 'd'])
+	commands.push(['zadd', 'source', 0, 'a'])
+	commands.push(['zadd', 'source', 0, 'c'])
+	commands.push(['zadd', 'source', 0, 'b'])
+	commands.push(['eval', lua.zrangebylexstore, 2, 'dest', 'source', '-', '(c']);
+	commands.push(['zrange', 'dest', 0, -1]);
+	commands.push(['del', 'source', 'dest']);
+
+	client.multi(commands).exec(function (err, result) {
+		t.notOk(err, 'no errors returned when running commands');
+
+		var data = result[result.length - 2];
+
+		t.deepEqual(data, ['a', 'b'], 'expected values returned');
+
+		t.end();
+		client.quit();
+	});
+});
