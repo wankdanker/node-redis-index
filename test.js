@@ -45,6 +45,28 @@ test('add documents to the index', function (t) {
 	});
 });
 
+test('test greater than', function (t) {
+	t.plan(2);
+
+	index.search({ item_id : RedisIndex.RedisIndexSearch.gt(1); }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[1], docs[2], docs[3]], 'correct documents returned')
+		t.end();
+	});
+});
+
+test('search on string field', function (t) {
+	t.plan(2);
+
+	index.search({ description : 'thing' }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[0], docs[1], docs[3]], 'correct documents returned')
+		t.end();
+	});
+});
+
 test('search on string field', function (t) {
 	t.plan(2);
 
