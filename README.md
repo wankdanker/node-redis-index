@@ -30,8 +30,8 @@ TODO
 - [x] comparisons
 - [x] deep lookups
 - [ ] arrays of values
-- [ ] arrays of objects
-- [ ] automatic full deep indexing
+- [x] arrays of objects
+- [x] automatic full deep indexing
 
 license
 -------
