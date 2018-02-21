@@ -32,6 +32,7 @@ TODO
 - [ ] arrays of values
 - [x] arrays of objects
 - [x] automatic full deep indexing
+- [ ] wildcards for schema definitions
 
 license
 -------
