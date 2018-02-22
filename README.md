@@ -35,6 +35,7 @@ TODO
 - [ ] wildcards for schema definitions
 - [ ] add comparisons
 	- [ ] exists
+	- [ ] empty/notExists
 	- [ ] contains
 	- [ ] begins with
 	- [ ] ends with
@@ -42,6 +43,8 @@ TODO
 - [ ] full text
 - [ ] string comparisons
 - [ ] sorting
+- [ ] intersect with other indexes
+- [ ] store key
 
 license
 -------
