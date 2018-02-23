@@ -44,11 +44,11 @@ TODO
 	- [x] in array (of values)
 - [ ] full text
 - [ ] string comparisons
-- [ ] sorting
+- [x] sorting
 - [x] intersect with other indexes
 - [x] store key
 - [ ] add array of objects
-- [ ] custom string tokenizing
+- [x] custom string tokenizing
 
 license
 -------
