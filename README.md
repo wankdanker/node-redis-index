@@ -1,6 +1,8 @@
 redis-index
 -----------
 
+[![Build Status](https://travis-ci.org/wankdanker/node-redis-index.svg?branch=master)](https://travis-ci.org/wankdanker/node-redis-index)
+
 Index and query arbitrary objects with Redis.
 
 example
