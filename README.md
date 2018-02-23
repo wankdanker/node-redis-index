@@ -45,8 +45,10 @@ TODO
 - [ ] full text
 - [ ] string comparisons
 - [ ] sorting
-- [ ] intersect with other indexes
-- [ ] store key
+- [x] intersect with other indexes
+- [x] store key
+- [ ] add array of objects
+- [ ] custom string tokenizing
 
 license
 -------

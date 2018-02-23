@@ -87,6 +87,57 @@ test('add documents to the typesIndex', function (t) {
 	});
 });
 
+test('test storeKey and from', function (t) {
+	// t.plan(2);
+
+	var key = 'test-key';
+
+	thingsIndex.search({ item_id : 1 }).exec({ storeKey : key }, function (err, result) {
+		t.notOk(err, 'no errors returned when storing');
+
+		thingsIndex.createSearch().from(key).exec(function (err, data) {
+			t.notOk(err, 'no errors returned when retrieving');
+
+			t.deepEqual(data, [things[0]], 'correct documents returned')
+			t.end();
+		});
+	});
+});
+
+test('test index.search(...).store(key) then index.from(key)', function (t) {
+	t.plan(3);
+
+	var key = 'test-key';
+
+	thingsIndex.search({ item_id : 1 }).store(key, function (err, result) {
+		t.notOk(err, 'no errors returned when storing');
+
+		thingsIndex.from(key).exec(function (err, data) {
+			t.notOk(err, 'no errors returned when retrieving');
+
+			t.deepEqual(data, [things[0]], 'correct documents returned')
+			t.end();
+		});
+	});
+});
+
+test('test index.search().store(key) then index.from(key).and(...)', function (t) {
+	t.plan(3);
+
+	var key = 'test-key';
+
+	thingsIndex.search().store(key, function (err, result) {
+		t.notOk(err, 'no errors returned when storing');
+
+		thingsIndex.from(key).and({ item_id : 4 }).exec(function (err, data) {
+			t.notOk(err, 'no errors returned when retrieving');
+
+			t.deepEqual(data, [things[3]], 'correct documents returned')
+			t.end();
+		});
+	});
+});
+
 test('test item_id greater than equal to 2 intersected with typesIndex', function (t) {
 	t.plan(2);
 
