@@ -1,6 +1,6 @@
 {
   "name": "redis-index",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "Index and query arbitrary objects with Redis.",
   "main": "index.js",
   "dependencies": {
