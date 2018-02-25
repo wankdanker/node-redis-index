@@ -58,6 +58,28 @@ test('return all documents', function (t) {
 	});
 });
 
+test('test retrieving pages', function (t) {
+	t.plan(2);
+
+	index.search().sort('item_id', 'desc').exec({ page : 2, pageSize : 2 }, function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[1], docs[0]], 'correct documents returned');
+		t.end();
+	});
+});
+
+test('test retrieving pages with sort order reversed', function (t) {
+	t.plan(2);
+
+	index.search().exec({ page : 2, pageSize : 2 }, function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[2], docs[3]], 'correct documents returned');
+		t.end();
+	});
+});
+
 test('boolean test for true', function (t) {
 	t.plan(2);
 

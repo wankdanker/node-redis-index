@@ -34,7 +34,7 @@ TODO
 - [ ] arrays of values
 - [x] arrays of objects
 - [x] automatic full deep indexing
-- [ ] wildcards for schema definitions
+- [x] wildcards for schema definitions
 - [ ] add comparisons
 	- [ ] exists
 	- [ ] empty/notExists
@@ -49,6 +49,7 @@ TODO
 - [x] store key
 - [ ] add array of objects
 - [x] custom string tokenizing
+- [x] paging
 
 license
 -------
