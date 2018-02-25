@@ -4,10 +4,10 @@ var lua = require('../lib/lua');
 var debug = require('debug')('redis-index');
 
 var docs = [
-	{ item_id : 1, name : 'steve', description : 'hello there thing', type : 1, when : new Date(), value : 100 }
-	, { item_id : 2, name : 'sam', description : 'this thing is named sam', type : 1, when : new Date(), value : 50 }
-	, { item_id : 3, name : 'george', description : 'and here is one george', type : 2, when : new Date(), value : 75 }
-	, { item_id : 4, name : 'brenda mcgill', description : 'i am a hungry thing', type : 2, when : new Date(), value : 30 }
+	{ item_id : 1, name : 'steve', description : 'hello there thing', type : 1, when : new Date(), value : 100, boolz : false }
+	, { item_id : 2, name : 'sam', description : 'this thing is named sam', type : 1, when : new Date(), value : 50, boolz : false }
+	, { item_id : 3, name : 'george', description : 'and here is one george', type : 2, when : new Date(), value : 75, boolz : true }
+	, { item_id : 4, name : 'brenda mcgill', description : 'i am a hungry thing', type : 2, when : new Date(), value : 30, boolz : false }
 ];
 
 var index;
@@ -21,6 +21,7 @@ test('create an index', function (t) {
 			name : {
 				literal : true
 			}
+			, boolz : { type : 'boolean' }
 		}
 	});
 
@@ -53,6 +54,28 @@ test('return all documents', function (t) {
 		t.notOk(err, 'no errors returned');
 
 		t.deepEqual(data, [docs[0], docs[1], docs[2], docs[3]], 'correct documents returned');
+		t.end();
+	});
+});
+
+test('boolean test for true', function (t) {
+	t.plan(2);
+
+	index.search({ boolz : true }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[2]], 'correct documents returned');
+		t.end();
+	});
+});
+
+test('boolean test for false', function (t) {
+	t.plan(2);
+
+	index.search({ boolz : false }).exec(function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[0], docs[1], docs[3]], 'correct documents returned');
 		t.end();
 	});
 });
