@@ -4,7 +4,7 @@ local function massive_redis_command(command, key, t)
     while(i <= #t) do
         table.insert(temp, t[i+1])
         table.insert(temp, t[i])
-        if #temp >= 1000 then
+        if #temp >= 4000 then
             redis.call(command, key, unpack(temp))
             temp = {}
         end
