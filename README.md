@@ -25,6 +25,23 @@ setTimeout(function () {
 }, 1000);
 ```
 
+api
+---
+
+### RedisIndex
+
+* RedisIndex.createIndex(options)
+
+Create a new index to which objects may be added.
+
+* **options** : options objects
+	* **key** : *string* - the namespace key to use when storing keys in redis
+	* **index** : *string* - the attribute which exists on an object being indexed which should be used to uniquely identify that object.
+	* **schemaOnly** : *boolean* - when true, only index fields identified in the schema
+	* **fullText** : *function* - when exists, this function will be called with each object being added to the index. The function should return a string to be indexed for full text search. This option must be present in order to enable full text search.
+	* **schema** : *object* - an object which identifies information about attributes encountered when indexing.
+
+
 TODO
 ----
 
@@ -42,7 +59,7 @@ TODO
 	- [ ] begins with
 	- [ ] ends with
 	- [x] in array (of values)
-- [ ] full text
+- [x] full text
 - [ ] string comparisons
 - [x] sorting
 - [x] intersect with other indexes
