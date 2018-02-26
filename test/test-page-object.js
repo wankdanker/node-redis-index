@@ -31,7 +31,7 @@ test('test requesting page more than total pages', function (t) {
     , total: 123
     , count: 5
     , start: 125
-    , stop: 149
+    , stop: 122
     , first: 1
     , last: 5
     , next: null
