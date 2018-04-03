@@ -98,3 +98,36 @@ test('test zrangestoreswap lua script', function (t) {
 		client.quit();
 	});
 });
+
+test('test zdiffstore lua script', function (t) {
+	var commands = [];
+	var client = RedisIndex.createClient();
+
+	commands.push(['zadd', 'list1', 10001, 1])
+	commands.push(['zadd', 'list1', 10002, 2])
+	commands.push(['zadd', 'list1', 10003, 3])
+	commands.push(['zadd', 'list1', 10004, 4])
+	commands.push(['zadd', 'list1', 10005, 5])
+	commands.push(['zadd', 'list2', 10003, 3])
+	commands.push(['zadd', 'list2', 10004, 4])
+	commands.push(['zadd', 'list2', 10005, 5])
+
+	commands.push(['eval', lua.zdiffstore, 3, 'result', 'list1', 'list2']);
+	commands.push(['zrange', 'result', 0, -1, 'withscores']);
+	commands.push(['del', 'list1', 'list2', 'result']);
+
+	client.multi(commands).exec(function (err, result) {
+		t.notOk(err, 'no errors returned when running commands');
+
+		var count = result[results.length - 3];
+
+		t.equal(count, 2, 'script returned correct number of diff items')
+
+		var data = result[result.length - 2];
+
+		t.deepEqual(data, [ '1', '10001', '2', '10002' ], 'expected values returned');
+
+		t.end();
+		client.quit();
+	});
+});
