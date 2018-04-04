@@ -1,3 +1,4 @@
+--zrangebylexstore
 local function massive_redis_command(command, key, t)
     local i = 1
     local temp = {}
