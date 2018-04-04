@@ -144,7 +144,7 @@ test('test item_id greater than equal to 2 intersected with typesIndex', functio
 	thingsIndex.search({ item_id : 1 }).intersect(typesIndex, 'type', 'type').exec(function (err, data) {
 		t.notOk(err, 'no errors returned');
 
-		t.deepEqual(data, [types[1]], 'correct documents returned')
+		t.deepEqual(data, [types[0]], 'correct documents returned')
 		t.end();
 	});
 });
