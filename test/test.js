@@ -272,6 +272,17 @@ test('execute multiple search test with removed document', function (t) {
 	});
 });
 
+test('run search with callback instead of calling exec', function (t){
+	t.plan(2);
+
+	index.search({ description : 'thing', item_id : 1 }, function (err, data) {
+		t.notOk(err, 'no errors returned');
+
+		t.deepEqual(data, [docs[0]], 'correct documents returned')
+		t.end();
+	});
+});
+
 test('remove documents from the index', function (t) {
 	var pending = 0;
 
