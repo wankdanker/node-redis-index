@@ -7,6 +7,7 @@
     "dank-each": "^1.0.0",
     "debug": "^3.1.0",
     "deepval": "^4.0.0",
+    "get-value": "^3.0.1",
     "hiredis": "^0.5.0",
     "pluralize": "^7.0.0",
     "redis": "^2.8.0",
