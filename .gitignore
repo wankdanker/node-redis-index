@@ -2,3 +2,5 @@ package-lock.json
 node_modules
 publish
 .gitignore
+test/pavilion.js
+.vscode
