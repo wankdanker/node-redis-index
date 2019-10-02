@@ -67,6 +67,7 @@ TODO
 - [ ] add array of objects
 - [x] custom string tokenizing
 - [x] paging
+- [x] make Promise compatible
 
 license
 -------
