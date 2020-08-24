@@ -4,7 +4,7 @@ var lua = require('../lib/lua');
 
 test('test zrangestore lua script', function (t) {
 	var commands = [];
-	var client = RedisIndex.createClient();
+	var client = RedisIndex.obtainClient();
 
 	commands.push(['zadd', 'source', 10, 'd'])
 	commands.push(['zadd', 'source', 1, 'a'])
@@ -28,7 +28,7 @@ test('test zrangestore lua script', function (t) {
 
 test('test zrangebyscorestore lua script', function (t) {
 	var commands = [];
-	var client = RedisIndex.createClient();
+	var client = RedisIndex.obtainClient();
 
 	commands.push(['zadd', 'source', 10, 'd'])
 	commands.push(['zadd', 'source', 1, 'a'])
@@ -52,7 +52,7 @@ test('test zrangebyscorestore lua script', function (t) {
 
 test('test zrangebylexstore lua script', function (t) {
 	var commands = [];
-	var client = RedisIndex.createClient();
+	var client = RedisIndex.obtainClient();
 
 	commands.push(['zadd', 'source', 0, 'd'])
 	commands.push(['zadd', 'source', 0, 'a'])
@@ -76,7 +76,7 @@ test('test zrangebylexstore lua script', function (t) {
 
 test('test zrangestoreswap lua script', function (t) {
 	var commands = [];
-	var client = RedisIndex.createClient();
+	var client = RedisIndex.obtainClient();
 
 	commands.push(['zadd', 'source', 10001, 1])
 	commands.push(['zadd', 'source', 10002, 2])
@@ -101,7 +101,7 @@ test('test zrangestoreswap lua script', function (t) {
 
 test('test zdiffstore lua script', function (t) {
 	var commands = [];
-	var client = RedisIndex.createClient();
+	var client = RedisIndex.obtainClient();
 
 	commands.push(['zadd', 'list1', 10001, 1])
 	commands.push(['zadd', 'list1', 10002, 2])
@@ -134,7 +134,7 @@ test('test zdiffstore lua script', function (t) {
 
 test('test zduplicatescorestore lua script', function (t) {
 	var commands = [];
-	var client = RedisIndex.createClient();
+	var client = RedisIndex.obtainClient();
 
 	commands.push(['zadd', 'list1', 10001, 1])
 	commands.push(['zadd', 'list1', 10001, 2])
