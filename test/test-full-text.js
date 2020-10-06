@@ -15,6 +15,7 @@ var index;
 test('create an index', function (t) {
 	index = RedisIndex.createIndex({
 		key : 'redis-index-test'
+		, compress : RedisIndex.compression[process.env.COMPRESS]
 		, index : 'item_id'
 		, storeObject : true
     , fullText : function (obj) {

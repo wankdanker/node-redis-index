@@ -7,6 +7,7 @@ test('attempt to replicate and fix issue #5', async function (t) {
     const ri = RedisIndex.createIndex({
         key: 'ri:test',	// Redis key namespace
         index: 'unique',	// he attribute of the document whose value uniquely identifies that object
+        compress : RedisIndex.compression[process.env.COMPRESS],
         schema: {
             description: {literal: false},
             name: {

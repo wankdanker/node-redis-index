@@ -1,7 +1,5 @@
 var test = require('tape');
 var RedisIndex = require('../');
-var lua = require('../lib/lua');
-var debug = require('debug')('redis-index');
 
 var docs = [
 	{ item_id : 1, name : 'steve', description : 'hello there thing', type : 1, when : new Date(), value : 100, boolz : false }
@@ -15,6 +13,7 @@ var index;
 test('create an index', function (t) {
 	index = RedisIndex.createIndex({
 		key : 'redis-index-test'
+		, compress : RedisIndex.compression[process.env.COMPRESS]
 		, index : 'item_id'
 		, storeObject : true
 		, schema : {

@@ -12,10 +12,11 @@
     "redis-key": "^1.3.0"
   },
   "devDependencies": {
+    "lz4": "0.6.3",
     "tape": "^4.9.0"
   },
   "scripts": {
-    "test": "tape test/*.js"
+    "test": "tape test/*.js && COMPRESS=brotli tape test/*.js && COMPRESS=gzip tape test/*.js && COMPRESS=deflate tape test/*.js && COMPRESS=lz4 tape test/*.js"
   },
   "repository": {
     "type": "git",

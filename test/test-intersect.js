@@ -22,6 +22,7 @@ var typesIndex;
 test('create a thingsIndex', function (t) {
 	thingsIndex = RedisIndex.createIndex({
 		key : 'redis-index-test-things'
+		, compress : RedisIndex.compression[process.env.COMPRESS]
 		, index : 'item_id'
 		, storeObject : true
 		, schema : {

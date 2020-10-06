@@ -40,7 +40,23 @@ Create a new index to which objects may be added.
 	* **schemaOnly** : *boolean* - when true, only index fields identified in the schema
 	* **fullText** : *function* - when exists, this function will be called with each object being added to the index. The function should return a string to be indexed for full text search. This option must be present in order to enable full text search.
 	* **schema** : *object* - an object which identifies information about attributes encountered when indexing.
+	* **compress** : *object* - and object with synchronous encode and decode functions for compressing and decompressing values
 
+more examples
+-------------
+
+### compression
+
+```js
+var RedisIndex = require('redis-index');
+
+var index = RedisIndex.createIndex({
+	key : 'item'
+	, index : 'item_id'
+	, compress : RedisIndex.compression.gzip
+});
+
+```
 
 TODO
 ----
@@ -68,6 +84,7 @@ TODO
 - [x] custom string tokenizing
 - [x] paging
 - [x] make Promise compatible
+- [x] compression
 
 license
 -------
